@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: dev-bootcamp-be
+  name: team-taurus-backend
   labels:
-    app: dev-bootcamp-be
+    app: team-taurus-backend
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
-      app: dev-bootcamp-be
+      app: team-taurus-backend
   template:
     metadata:
       labels:
-        app: dev-bootcamp-be
+        app: team-taurus-backend
     spec:
       containers:
-        - name: dev-bootcamp-be
-          image: dev-bootcamp-be
+        - name: team-taurus-backend
+          image: quay.io/yoshimitsu_egashira_ibm/team-taurus-backend
           ports:
             - containerPort: 3000
