@@ -1,15 +1,17 @@
 apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
-  annotations:
-    argocd.argoproj.io/sync-options: Validate=false
-    openshift.io/host.generated: "true"
-  name: akpfs
+  # annotations:
+  #   argocd.argoproj.io/sync-options: Validate=false
+  #   openshift.io/host.generated: "true"
+  name: team-taurus-backend-route
+  labels:
+    app: team-taurus-backend
 spec:
   tls:
     termination: edge
   to:
      kind: Service
-     name: team-taurus-backend-pipeline
+     name: team-taurus-backend-service
      weight: 100
   wildcardPolicy: None

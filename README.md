@@ -42,4 +42,14 @@ oc get pods
 NAME                                   READY   STATUS    RESTARTS   AGE
 team-taurus-backend-5c9556fb76-g8trd   1/1     Running   0          36s
 team-taurus-backend-5c9556fb76-knx7v   1/1     Running   0          36s
+
+oc apply -f ./kubernetes/service.yaml
+
+oc get svc
+NAME                          TYPE       CLUSTER-IP       EXTERNAL-IP   PORT(S)        AGE
+team-taurus-backend-service   NodePort   172.21.145.149   <none>        80:30196/TCP   30s
+
+oc apply -f ./kubernetes/route.yaml
+
+oc get all
 ```
