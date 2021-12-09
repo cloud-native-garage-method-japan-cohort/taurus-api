@@ -16,6 +16,13 @@ spec:
     spec:
       containers:
         - name: team-taurus-backend
-          image: quay.io/yoshimitsu_egashira_ibm/team-taurus-backend
+          image: quay.io/yoshimitsu_egashira_ibm/team-taurus-backend:v1.3
+          imagePullPolicy: Always
           ports:
-            - containerPort: 3000
+            - containerPort: 8000
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 8000
+            initialDelaySeconds: 3
+            periodSeconds: 3
