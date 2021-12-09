@@ -10,6 +10,6 @@ spec:
     termination: edge
   to:
      kind: Service
-     name: wataru-nishiki-pipeline-from-scratch
+     name: team-taurus-backend
      weight: 100
   wildcardPolicy: None

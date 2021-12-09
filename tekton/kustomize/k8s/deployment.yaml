@@ -5,25 +5,25 @@ metadata:
     #app.openshift.io/vcs-ref: f7580aa1eb6f7176705176e201ecff4de93edafb
     #app.openshift.io/vcs-uri: https://github.com/cloud-native-garage-method-japan-cohort/wataru-nishiki-express-sample-app.git
   labels:
-    app: wataru-nishiki-pipeline-from-scratch
-    app.kubernetes.io/instance: wataru-nishiki-pipeline-from-scratch
-    app.kubernetes.io/name: wataru-nishiki-pipeline-from-scratch
+    app: team-taurus-backend
+    app.kubernetes.io/instance: team-taurus-backend
+    app.kubernetes.io/name: team-taurus-backend
     app.openshift.io/runtime: js
-  name: wataru-nishiki-pipeline-from-scratch
+  name: team-taurus-backend
 spec:
   progressDeadlineSeconds: 600
   replicas: 1
   revisionHistoryLimit: 10
   selector:
     matchLabels:
-      app.kubernetes.io/instance: wataru-nishiki-pipeline-from-scratch
-      app.kubernetes.io/name: wataru-nishiki-pipeline-from-scratch
+      app.kubernetes.io/instance: team-taurus-backend
+      app.kubernetes.io/name: team-taurus-backend
   template:
     metadata:
       creationTimestamp: null
       labels:
-        app.kubernetes.io/instance: wataru-nishiki-pipeline-from-scratch
-        app.kubernetes.io/name: wataru-nishiki-pipeline-from-scratch
+        app.kubernetes.io/instance: team-taurus-backend
+        app.kubernetes.io/name: team-taurus-backend
     spec:
       containers:
         - env:
@@ -42,7 +42,7 @@ spec:
             periodSeconds: 10
             successThreshold: 1
             timeoutSeconds: 1
-          name: wataru-nishiki-pipeline-from-scratch
+          name: team-taurus-backend
           ports:
             - containerPort: 3000
               name: http

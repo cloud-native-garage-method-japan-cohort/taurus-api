@@ -69,5 +69,9 @@ git-clone   24s
 npm         11s
 yaml-lint   4s
 
-oc create -f ./tekton/pvc.yaml
+oc apply -f ./tekton/pvc.yaml
+```
+
+```
+oc apply -f ./tekton/team-taurus-backend-pipeline.yaml 
 ```

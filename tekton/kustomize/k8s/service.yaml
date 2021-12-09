@@ -2,10 +2,10 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: wataru-nishiki-pipeline-from-scratch
-    app.kubernetes.io/instance: wataru-nishiki-pipeline-from-scratch
-    app.kubernetes.io/name: wataru-nishiki-pipeline-from-scratch
-  name: wataru-nishiki-pipeline-from-scratch
+    app: team-taurus-backend
+    app.kubernetes.io/instance: team-taurus-backend
+    app.kubernetes.io/name: team-taurus-backend
+  name: team-taurus-backend
 spec:
   ports:
     - name: http
@@ -13,7 +13,7 @@ spec:
       protocol: TCP
       targetPort: 3000
   selector:
-    app.kubernetes.io/instance: wataru-nishiki-pipeline-from-scratch
-    app.kubernetes.io/name: wataru-nishiki-pipeline-from-scratch
+    app.kubernetes.io/instance: team-taurus-backend
+    app.kubernetes.io/name: team-taurus-backend
   sessionAffinity: None
   type: ClusterIP
