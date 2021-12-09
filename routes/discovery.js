@@ -7,7 +7,6 @@ const config = require('config');
 // eslint-disable-next-line new-cap
 const router = express.Router();
 
-
 // 接続情報
 const discovery = new DiscoveryV1({
   version: config.get('watson.discovery.version'),
@@ -17,40 +16,30 @@ const discovery = new DiscoveryV1({
   serviceUrl: config.get('watson.discovery.serviceUrl'),
 });
 
-const createQuery = (categoryLabel, searchStr) => {
-  const texts = searchStr.split(' ').map((item) => `text:"${item}"`).join(',');
-  return `enriched_text.categories.label::"${categoryLabel}",(${texts})`;
+const createQuery = (searchStr) => {
+  return `extracted_metadata.title:"${searchStr}"`;
 };
 
-const runQuery = async (categoryLabel, searchStr) => {
-  const query = createQuery(categoryLabel, searchStr);
+const runQuery = async (searchStr) => {
+  const query = createQuery(searchStr);
 
   const queryParams = {
     environmentId: config.get('watson.discovery.environmentId'),
     collectionId: config.get('watson.discovery.collectionId'),
-    highlight: true,
     query,
-    _return: 'highlight',
   };
 
   console.log(`Running query - ${query}`);
   const queryResponse = await discovery.query(queryParams);
-
-  // let result = '';
+  console.log(queryResponse);
   const results = queryResponse.result.results;
   console.log(JSON.stringify(results, null, '\t'));
   if (queryResponse.result.results && queryResponse.result.results.length > 0) {
-    return queryResponse.result.results[0].highlight.text[0]
-        .replace(/<em>/g, '')
-        .replace(/<\/em>/g, '');
-
-    // const textArray = queryResponse.result.results[0].highlight.text
-    // const filtered = textArray.map((text) => {
-    //   return text.replace(/<em>/g, '').replace(/<\/em>/g, '');
-    // });
-    // return filtered;
+    return queryResponse.result.results.map((result, index) => {
+      return {id: index + 1, name: result.extracted_metadata.title};
+    });
   } else {
-    return '該当する情報が見つかりませんでした。';
+    return [];
   }
 };
 
@@ -63,9 +52,10 @@ router.post('/search', async (req, res) => {
     }
 
     // TODO: フレーバーの単語で、タイトルを検索する
-    const responseText = await runQuery('/health and fitness/disease', req.body.searchText);
+    const responseText = await runQuery(req.body.searchText);
     res.json({
-      responseText,
+      total: responseText.length,
+      items: responseText,
     });
   } catch (error) {
     console.error(error);
