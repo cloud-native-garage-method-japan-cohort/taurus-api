@@ -6,7 +6,8 @@
     "node": "12.8.1"
   },
   "scripts": {
-    "start": "nodemon ./bin/www",
+    "start": "node ./bin/www",
+    "dev": "nodemon ./bin/www",
     "test": "mocha -t 10000 ./test/**/*.spec.js",
     "lint": "esw ."
   },
