@@ -53,3 +53,21 @@ oc apply -f ./kubernetes/route.yaml
 
 oc get all
 ```
+
+## Prepare create pipeline by Tekton
+
+```sh
+oc apply -f https://raw.githubusercontent.com/tektoncd/catalog/main/task/git-clone/0.5/git-clone.yaml
+
+oc apply -f https://raw.githubusercontent.com/tektoncd/catalog/main/task/npm/0.1/npm.yaml
+
+oc apply -f https://raw.githubusercontent.com/tektoncd/catalog/main/task/yaml-lint/0.1/yaml-lint.yaml
+
+oc get tasks
+NAME        AGE
+git-clone   24s
+npm         11s
+yaml-lint   4s
+
+oc create -f ./tekton/pvc.yaml
+```

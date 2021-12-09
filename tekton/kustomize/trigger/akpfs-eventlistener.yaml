@@ -1,0 +1,11 @@
+apiVersion: triggers.tekton.dev/v1alpha1
+kind: EventListener
+metadata:
+  name: akpfs
+spec:
+  serviceAccountName: tekton-triggers-sa
+  triggers:
+    - bindings:
+        - ref: wataru-nishiki-pipeline-from-scratch-pipeline-triggerbinding
+      template:
+        ref: wataru-nishiki-pipeline-from-scratch-triggertemplate
