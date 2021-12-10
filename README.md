@@ -74,7 +74,7 @@ yaml-lint   15m
 oc apply -f ./tekton/pvc.yaml
 ```
 
-```
+```sh
 oc apply -f ./tekton/team-taurus-backend-pipeline.yaml
 tkn pipeline list
 
@@ -87,6 +87,6 @@ oc get secret
 sh ./create_sa.sh
 
 oc create -f ./tekton/team-taurus-backend-pipeline-run.yaml
-```
+
 oc apply -f ./tekton/team-taurus-backend-pipeline.yaml 
 ```
