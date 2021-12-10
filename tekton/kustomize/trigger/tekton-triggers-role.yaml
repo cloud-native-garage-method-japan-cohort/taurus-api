@@ -24,7 +24,7 @@ rules:
       - get
       - list
       - create
-      -  watch
+      - watch
   - apiGroups:
       - ""
     resources:
