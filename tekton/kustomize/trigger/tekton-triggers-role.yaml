@@ -5,7 +5,7 @@ metadata:
 rules:
   - apiGroups:
       - triggers.tekton.dev
-      - tekton.dev
+      # - tekton.dev
     resources:
       - eventlisteners
       - triggerbindings
