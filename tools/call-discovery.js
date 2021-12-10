@@ -3,9 +3,12 @@ const {IamAuthenticator} = require('ibm-watson/auth');
 const config = require('config');
 
 const discovery = new DiscoveryV1({
+  
+
   version: config.get('watson.discovery.version'),
   authenticator: new IamAuthenticator({
-    apikey: config.get('watson.discovery.apikey'),
+//    apikey: config.get('watson.discovery.apikey'),
+    apikey: process.env.WD_API_KEY,
   }),
   serviceUrl: config.get('watson.discovery.serviceUrl'),
 });

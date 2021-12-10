@@ -2,7 +2,7 @@
   "watson": {
     "discovery": {
       "version": "2019-04-30",
-      "apikey": "RGrONJi28o6u0DHKGm15KebDxuTdR0oAP3svKqzP5DJy",
+      "apikey": "",
       "serviceUrl": "https://api.eu-gb.discovery.watson.cloud.ibm.com/instances/20f86910-fc02-4b7b-9faa-9e49666ceb72",
       "environmentId": "383f0953-ddd2-49dc-ac85-06d0f86be50b",
       "collectionId": "83d8d434-0761-4892-ab75-885c19092c9a"
