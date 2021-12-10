@@ -75,5 +75,18 @@ oc apply -f ./tekton/pvc.yaml
 ```
 
 ```
+oc apply -f ./tekton/team-taurus-backend-pipeline.yaml
+tkn pipeline list
+
+oc apply -f ./kustomize-build-task.yaml
+oc apply -f ./test-deploy-task.yaml
+
+chomod +x create_sa.sh create_secret.sh
+sh ./create_secret.sh
+oc get secret
+sh ./create_sa.sh
+
+oc create -f ./tekton/team-taurus-backend-pipeline-run.yaml
+```
 oc apply -f ./tekton/team-taurus-backend-pipeline.yaml 
 ```
