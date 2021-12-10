@@ -9,5 +9,4 @@ spec:
   workspaces:
     - name: pipeline-shared-data
       persistentVolumeClaim:
-        claimName: wataru-nishiki-pvc
-
+        claimName: team-taurus-backend-pvc

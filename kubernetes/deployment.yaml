@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: team-taurus-backend
-          image: quay.io/yoshimitsu_egashira_ibm/team-taurus-backend:v1.4
+          image: quay.io/yoshimitsu_egashira_ibm/team-taurus-backend:v1.5
           imagePullPolicy: Always
           ports:
             - name: http-listener
