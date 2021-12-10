@@ -90,3 +90,7 @@ oc create -f ./tekton/team-taurus-backend-pipeline-run.yaml
 ```
 oc apply -f ./tekton/team-taurus-backend-pipeline.yaml 
 ```
+
+```
+oc apply -f tekton-triggers-sa.yaml
+```
