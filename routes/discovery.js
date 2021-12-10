@@ -3,6 +3,7 @@ const express = require('express');
 const DiscoveryV1 = require('ibm-watson/discovery/v1');
 const {IamAuthenticator} = require('ibm-watson/auth');
 const config = require('config');
+const cors = require('cors')
 
 // eslint-disable-next-line new-cap
 const router = express.Router();
@@ -44,7 +45,7 @@ const runQuery = async (searchStr) => {
 };
 
 
-router.post('/search', async (req, res) => {
+router.post('/search', cors(), async (req, res) => {
   try {
     if (!req.body.searchText) {
       res.status(400).send('Missing search text.');
