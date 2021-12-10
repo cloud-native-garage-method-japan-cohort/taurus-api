@@ -15,4 +15,3 @@ spec:
         eventTypes: ["push"]
       - cel:
         filter: "body.repository.name == 'team-taurus-backend' && body.ref.split('/')[2] == 'master'"
-        filter: "body.repository.name == 'orion-backend' && body.ref.split('/')[2] == 'master'"
