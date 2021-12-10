@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: team-taurus-backend-deployment
+  labels:
+    app: team-taurus-backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: team-taurus-backend
+  template:
+    metadata:
+      labels:
+        app: team-taurus-backend
+    spec:
+      containers:
+        - name: team-taurus-backend
+          image: quay.io/yoshimitsu_egashira_ibm/team-taurus-backend:v1.5
+          imagePullPolicy: Always
+          ports:
+            - name: http-listener
+              containerPort: 8000
+          # livenessProbe:
+          #   httpGet:
+          #     path: /
+          #     port: 8000
+          #   initialDelaySeconds: 3
+          #   periodSeconds: 3

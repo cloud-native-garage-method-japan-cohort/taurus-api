@@ -15,6 +15,7 @@ spec:
       script: |
         #!/bin/sh
         cd source/kubernetes
+        rm manifests.yaml
         kustomize edit set image $(params.image-with-tag)
         kustomize build > manifests.yaml
         if [ -f manifests.yaml ]; then
