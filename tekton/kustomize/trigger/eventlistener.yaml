@@ -5,7 +5,13 @@ metadata:
 spec:
   serviceAccountName: tekton-triggers-sa
   triggers:
-    - bindings:
+    - name: deploy-trigger-for-backend
+      bindings:
         - ref: team-taurus-backend-triggerbinding
       template:
         ref: team-taurus-backend-triggertemplate
+      interceptors:
+        - github:
+            eventTypes: ["push"]
+        - cel:
+            filter: "body.repository.name == 'team-taurus-backend' && body.ref.split('/')[2] == 'master'"
