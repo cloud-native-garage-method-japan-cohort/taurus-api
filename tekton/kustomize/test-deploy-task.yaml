@@ -19,7 +19,7 @@ spec:
       image: docker.io/enzobarrett/kubectl:latest
       script: |
         #!/bin/sh
-        cd source/k8s
+        cd source/kubernetes
         set -e
         APP_NAMESPACE="$(params.app-namespace)"
 
@@ -30,7 +30,7 @@ spec:
       image: docker.io/enzobarrett/kubectl:latest
       script: |
         #!/bin/sh
-        cd source/k8s
+        cd source/kubernetes
         set -e
         APP_NAMESPACE="$(params.app-namespace)"
         APP_NAME="$(params.app-name)"

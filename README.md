@@ -63,12 +63,14 @@ oc apply -f https://raw.githubusercontent.com/tektoncd/catalog/main/task/npm/0.1
 
 oc apply -f https://raw.githubusercontent.com/tektoncd/catalog/main/task/yaml-lint/0.1/yaml-lint.yaml
 
+oc apply -f https://raw.githubusercontent.com/tektoncd/catalog/main/task/buildah/0.2/buildah.yaml
+
 oc get tasks
 NAME        AGE
-git-clone   24s
-npm         11s
-yaml-lint   4s
-
+buildah     7s
+git-clone   15m
+npm         15m
+yaml-lint   15m
 oc apply -f ./tekton/pvc.yaml
 ```
 
@@ -85,4 +87,6 @@ oc get secret
 sh ./create_sa.sh
 
 oc create -f ./tekton/team-taurus-backend-pipeline-run.yaml
+```
+oc apply -f ./tekton/team-taurus-backend-pipeline.yaml 
 ```
