@@ -1,0 +1,17 @@
+apiVersion: triggers.tekton.dev/v1alpha1
+kind: EventListener
+metadata:
+  name: team-taurus-backend
+spec:
+  serviceAccountName: tekton-triggers-sa
+  triggers:
+    - name: deploy-trigger-for-backend
+      bindings:
+      - ref: team-taurus-backend-triggerbinding
+      template:
+        ref: team-taurus-backend-triggertemplate
+      interceptors:
+      - github:
+          eventTypes: ["push"]
+      - cel:
+          filter: "body.repository.name == 'team-taurus-backend' && body.ref.split('/')[2] == 'master'"

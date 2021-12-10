@@ -15,6 +15,7 @@ spec:
       script: |
         #!/bin/sh
         cd source/k8s
+        ls -ltra
         rm manifests.yaml
         kustomize edit set image $(params.image-with-tag)
         kustomize build > manifests.yaml

@@ -35,7 +35,7 @@ oc new-project team-taurus-backend
 
 ```sh
 # Create deployment
-oc apply -f ./kubernetes/deployment.yaml
+oc apply -f ./k8s/deployment.yaml
 
 # Check runnning the two pods.
 oc get pods
@@ -43,13 +43,13 @@ NAME                                   READY   STATUS    RESTARTS   AGE
 team-taurus-backend-5c9556fb76-g8trd   1/1     Running   0          36s
 team-taurus-backend-5c9556fb76-knx7v   1/1     Running   0          36s
 
-oc apply -f ./kubernetes/service.yaml
+oc apply -f ./k8s/service.yaml
 
 oc get svc
 NAME                          TYPE       CLUSTER-IP       EXTERNAL-IP   PORT(S)        AGE
 team-taurus-backend-service   NodePort   172.21.145.149   <none>        80:30196/TCP   30s
 
-oc apply -f ./kubernetes/route.yaml
+oc apply -f ./k8s/route.yaml
 
 oc get all
 ```
@@ -74,7 +74,7 @@ yaml-lint   15m
 oc apply -f ./tekton/pvc.yaml
 ```
 
-```
+```sh
 oc apply -f ./tekton/team-taurus-backend-pipeline.yaml
 tkn pipeline list
 
@@ -87,7 +87,7 @@ oc get secret
 sh ./create_sa.sh
 
 oc create -f ./tekton/team-taurus-backend-pipeline-run.yaml
-```
+
 oc apply -f ./tekton/team-taurus-backend-pipeline.yaml 
 ```
 

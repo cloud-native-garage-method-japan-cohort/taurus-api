@@ -1,11 +1,11 @@
 apiVersion: triggers.tekton.dev/v1alpha1
 kind: TriggerBinding
 metadata:
-  name: wataru-nishiki-pipeline-from-scratch-pipeline-triggerbinding
+  name: team-taurus-backend-triggerbinding
 spec:
   params:
     - name: namespace
-      value: wataru-nishiki-pipeline-from-scratch
+      value: team-taurus-backend
     - name: gitrepositoryurl
       value: $(body.repository.url)
     - name: gitrepositoryname
