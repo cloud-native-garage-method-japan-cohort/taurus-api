@@ -1,11 +1,11 @@
 apiVersion: triggers.tekton.dev/v1alpha1
 kind: EventListener
 metadata:
-  name: akpfs
+  name: team-taurus-backend
 spec:
   serviceAccountName: tekton-triggers-sa
   triggers:
     - bindings:
-        - ref: wataru-nishiki-pipeline-from-scratch-pipeline-triggerbinding
+        - ref: team-taurus-backend-triggerbinding
       template:
-        ref: wataru-nishiki-pipeline-from-scratch-triggertemplate
+        ref: team-taurus-backend-triggertemplate

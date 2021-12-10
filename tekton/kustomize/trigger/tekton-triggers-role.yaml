@@ -10,6 +10,7 @@ rules:
       - eventlisteners
       - triggerbindings
       - triggertemplates
+      - triggers
     verbs:
       - get
       - list
@@ -43,14 +44,30 @@ roleRef:
   name: tekton-triggers-role
 ---
 apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: tekton-triggers-role-cl
+  namespace: team-taurus-backend
+rules:
+  - apiGroups:
+      - triggers.tekton.dev
+    resources:
+      - triggerbindings
+      - clusterinterceptors
+    verbs:
+      - get
+      - list
+      - watch
+---
+apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   name: tekton-triggers-rolebinding-cl
-  namespace: wataru-nishiki-pipeline-from-scratch
+  namespace: team-taurus-backend
 subjects:
   - kind: ServiceAccount
     name: tekton-triggers-sa
-    namespace: wataru-nishiki-pipeline-from-scratch
+    namespace: team-taurus-backend
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
