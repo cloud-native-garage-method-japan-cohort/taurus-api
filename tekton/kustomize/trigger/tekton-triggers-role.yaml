@@ -14,6 +14,7 @@ rules:
     verbs:
       - get
       - list
+      - watch
   - apiGroups:
       - tekton.dev
     resources:
@@ -23,6 +24,7 @@ rules:
       - get
       - list
       - create
+      - watch
   - apiGroups:
       - ""
     resources:
