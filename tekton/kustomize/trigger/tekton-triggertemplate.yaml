@@ -11,7 +11,7 @@ spec:
       spec:
         serviceAccountName: build-bot
         pipelineRef:
-          name: team-taurus-backend-pipeline-pipeline
+          name: team-taurus-backend-pipeline
         workspaces:
           - name: pipeline-shared-data
             persistentVolumeClaim:
