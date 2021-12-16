@@ -21,6 +21,12 @@ spec:
           ports:
             - name: http-listener
               containerPort: 8000
+          env:
+            - name: WD_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: wd-api-key 
+                  key: WD_API_KEY
           # livenessProbe:
           #   httpGet:
           #     path: /
